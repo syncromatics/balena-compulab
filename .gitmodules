@@ -1,6 +1,3 @@
-[submodule "resin-yocto-scripts"]
-	path = resin-yocto-scripts
-	url = https://github.com/resin-os/resin-yocto-scripts.git
 [submodule "layers/poky"]
 	path = layers/poky
 	url = https://git.yoctoproject.org/git/poky
@@ -13,12 +10,18 @@
 [submodule "layers/meta-fsl-arm-extra"]
 	path = layers/meta-fsl-arm-extra
 	url = https://github.com/Freescale/meta-fsl-arm-extra.git
-[submodule "layers/meta-resin"]
-	path = layers/meta-resin
-	url = https://github.com/resin-os/meta-resin.git
 [submodule "layers/oe-meta-go"]
 	path = layers/oe-meta-go
 	url = https://github.com/mem/oe-meta-go.git
 [submodule "layers/meta-compulab"]
 	path = layers/meta-compulab
 	url = https://github.com/compulab/yocto-compulab-layer
+[submodule "layers/meta-balena"]
+	path = layers/meta-balena
+	url = https://github.com/balena-os/meta-balena
+[submodule "balena-yocto-scripts"]
+	path = balena-yocto-scripts
+	url = https://github.com/balena-os/balena-yocto-scripts
+[submodule "layers/meta-rust"]
+	path = layers/meta-rust
+	url = https://github.com/meta-rust/meta-rust

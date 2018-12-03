@@ -7,7 +7,7 @@ module.exports =
 	aliases: [ 'cubox-i' ]
 	name: 'CompuLab imx7 SoM'
 	arch: 'armv7hf'
-	state: 'released'
+	state: 'experimental'
 
 	instructions: commonImg.instructions
 	gettingStartedLink:
@@ -20,10 +20,10 @@ module.exports =
 
 	yocto:
 		machine: 'cl-som-imx7'
-		image: 'resin-image'
+		image: 'resin-image-flasher'
 		fstype: 'resinos-img'
 		version: 'yocto-krogoth'
-		deployArtifact: 'resin-image-cl-som-imx7.resinos-img'
+		deployArtifact: 'resin-image-flasher-cl-som-imx7.resinos-img'
 		compressed: true
 
 	configuration:

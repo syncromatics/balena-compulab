@@ -2,8 +2,8 @@
 #MACHINE ?= "cl-som-imx7"
 
 # More info meta-resin/README.md
-#RESIN_CONNECTABLE ?= "1"
-#RESIN_CONNECTABLE_ENABLE_SERVICES ?= "0"
+RESIN_CONNECTABLE ?= "1"
+RESIN_CONNECTABLE_ENABLE_SERVICES ?= "1"
 #TARGET_REPOSITORY ?= ""
 #TARGET_TAG ?= ""
 
@@ -11,7 +11,7 @@
 #DEVELOPMENT_IMAGE = "1"
 
 # Set this to make build system generate resinhup bundles
-#RESINHUP ?= "yes"
+RESINHUP ?= "yes"
 
 # Set this to change the supervisor tag used
 #TARGET_TAG ?= "master"
@@ -41,7 +41,7 @@ DISTRO ?= "resin-systemd"
 RM_OLD_IMAGE = "1"
 
 # Package Management configuration
-PACKAGE_CLASSES ?= "package_rpm"
+PACKAGE_CLASSES ?= "package_ipk"
 
 # Additional image features
 USER_CLASSES ?= "buildstats image-mklibs image-prelink"
@@ -63,3 +63,7 @@ CONF_VERSION = "1"
 ACCEPT_FSL_EULA = "1"
 
 BBMASK = ".*/meta-compulab/recipes-browser/"
+
+HOSTTOOLS += "docker iptables"
+
+BALENA_STORAGE = "overlay2"
