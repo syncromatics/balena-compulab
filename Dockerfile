@@ -20,7 +20,8 @@ RUN apt-get update && apt-get install -y \
     sudo \
     locales \
     diffstat \
-    texinfo
+    texinfo \
+    fontconfig
 
 RUN curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
     add-apt-repository \
@@ -56,3 +57,5 @@ RUN groupadd -g 1999 appuser && \
     mkdir /home/appuser/.ssh && \
     ssh-keyscan github.com >> /home/appuser/.ssh/known_hosts && \
     chown appuser /home/appuser/.ssh -R
+
+RUN fc-cache -fv
