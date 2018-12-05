@@ -1,4 +1,3 @@
-
 #
 # compulab imx7 iot gate
 #
@@ -14,7 +13,7 @@ RESIN_BOOT_PARTITION_FILES_cl-som-imx7 = " \
     zImage-imx7d-sbc-imx7.dtb:/imx7d-sbc-imx7.dtb \
     zImage-imx7d-sbc-iot-imx7.dtb:/imx7d-sbc-iot-imx7.dtb \
     "
-    
+
 IMAGE_CMD_resinos-img_append_cl-som-imx7 () {
     # cl-som-imx7 needs uboot written at a specific location
     dd if=${DEPLOY_DIR_IMAGE}/u-boot-${MACHINE}.imx of=${RESIN_RAW_IMG} conv=notrunc seek=2 bs=512

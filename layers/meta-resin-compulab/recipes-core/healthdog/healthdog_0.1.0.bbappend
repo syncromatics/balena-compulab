@@ -1,1 +1,1 @@
-SRC_URI = "git://git@github.com/balena-os/healthdog-rs.git;protocol=ssh"
+SRC_URI = "git://github.com/balena-os/healthdog-rs.git;protocol=git"

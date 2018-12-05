@@ -11,7 +11,7 @@ build:
 build-inner:
 	dockerd &>/var/log/docker.log &
 	git submodule update --init --recursive
-	mkdir -p build/conf
-	#./balena-yocto-scripts/build/barys --remove-build --dry-run
+	#sudo -u appuser ./balena-yocto-scripts/build/barys --remove-build --dry-run
 	cp layers/meta-resin-compulab/conf/samples/local.conf.sample build/conf/local.conf
+	chgrp appuser ./ -R
 	sudo -u appuser ./balena-yocto-scripts/build/barys

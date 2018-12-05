@@ -17,7 +17,10 @@ RUN apt-get update && apt-get install -y \
     chrpath \
     gawk \
     acl \
-    sudo
+    sudo \
+    locales \
+    diffstat \
+    texinfo
 
 RUN curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
     add-apt-repository \
@@ -26,6 +29,14 @@ RUN curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID"
     stable" && \
     apt-get update && \
     apt-get -y install docker-ce
+
+RUN locale-gen en_US.UTF-8
+
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=en_US.UTF-8
+
+ENV LANG en_US.UTF-8
 
 WORKDIR /app
 
@@ -43,15 +54,5 @@ RUN groupadd -g 1999 appuser && \
     chown appuser /var/run/docker -R && \
     chown appuser /var/run/ -R && \
     mkdir /home/appuser/.ssh && \
-    ssh-keyscan github.com >> /home/appuser/.ssh/known_hosts
-
-#USER appuser
-
-
-#RUN groupadd -r bitbaker && useradd --no-log-init -r -g bitbaker bitbaker
-
-#RUN mkdir /home/bitbaker && \
-#    chown -R bitbaker:bitbaker /home/bitbaker && \
-#    chown -R bitbaker:bitbaker /app
-
-#USER bitbaker
+    ssh-keyscan github.com >> /home/appuser/.ssh/known_hosts && \
+    chown appuser /home/appuser/.ssh -R
