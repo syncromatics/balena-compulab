@@ -18,7 +18,7 @@
 	url = https://github.com/compulab/yocto-compulab-layer
 [submodule "layers/meta-balena"]
 	path = layers/meta-balena
-	url = https://github.com/balena-os/meta-balena
+	url = https://github.com/syncromatics/meta-balena
 [submodule "balena-yocto-scripts"]
 	path = balena-yocto-scripts
 	url = https://github.com/balena-os/balena-yocto-scripts
