@@ -21,7 +21,8 @@ RUN apt-get update && apt-get install -y \
     locales \
     diffstat \
     texinfo \
-    fontconfig
+    fontconfig \
+    python-dev
 
 RUN curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
     add-apt-repository \

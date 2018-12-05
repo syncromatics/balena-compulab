@@ -1,23 +1,26 @@
 # Supported machines
 #MACHINE ?= "cl-som-imx7"
 
+BBMASK = ".*/meta-compulab/recipes-browser/"
+
+# We use the overlayfs docker storage driver
+BALENA_STORAGE = "overlay2"
+
 # More info meta-resin/README.md
-RESIN_CONNECTABLE ?= "1"
-RESIN_CONNECTABLE_ENABLE_SERVICES ?= "1"
 #TARGET_REPOSITORY ?= ""
 #TARGET_TAG ?= ""
 
 # Set this to 1 if development image is desired
-#DEVELOPMENT_IMAGE = "1"
+DEVELOPMENT_IMAGE = "1"
 
 # Set this to make build system generate resinhup bundles
-RESINHUP ?= "yes"
+#RESINHUP ?= "yes"
 
 # Set this to change the supervisor tag used
 #TARGET_TAG ?= "master"
 
 # Compress final raw image
-#RESIN_RAW_IMG_COMPRESSION ?= "xz"
+RESIN_RAW_IMG_COMPRESSION ?= "xz"
 
 # Parallelism Options
 BB_NUMBER_THREADS ?= "${@oe.utils.cpu_count()}"
@@ -40,9 +43,6 @@ DISTRO ?= "resin-systemd"
 # Remove the old image before the new one is generated to save disk space when RM_OLD_IMAGE is set to 1, this is an easy way to keep the DEPLOY_DIR_IMAGE clean.
 RM_OLD_IMAGE = "1"
 
-# Package Management configuration
-PACKAGE_CLASSES ?= "package_ipk"
-
 # Additional image features
 USER_CLASSES ?= "buildstats image-mklibs image-prelink"
 
@@ -60,10 +60,11 @@ BB_DISKMON_DIRS = "\
 
 CONF_VERSION = "1"
 
-ACCEPT_FSL_EULA = "1"
+# the BSP layer (meta-variscite-fslc) now introduces the need for cc as a host tool (the gcc package)
+# we remove it as we don't use it and we have no need for the gcc suite to be installed in the build env
+HOSTTOOLS_remove = "cc"
 
-BBMASK = ".*/meta-compulab/recipes-browser/"
-
+# Allow use of host docker from recipes
 HOSTTOOLS += "docker iptables"
 
-BALENA_STORAGE = "overlay2"
+ACCEPT_FSL_EULA = "1"

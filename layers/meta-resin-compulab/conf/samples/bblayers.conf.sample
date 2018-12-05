@@ -23,4 +23,5 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-balena/meta-resin-krogoth \
     ${TOPDIR}/../layers/meta-resin-compulab \
     ${TOPDIR}/../layers/meta-rust \
+    ${TOPDIR}/../layers/oe-meta-go \
     "
